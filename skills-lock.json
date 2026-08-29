@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "git-commit-series": {
+      "source": "./skills/git-commit-series",
+      "sourceType": "local",
+      "computedHash": "fc1b29305724dbebb186d3c2f4497a51eac446de6bd8296e1b8b6bce8dd9f0be"
+    },
     "writing-for-agents": {
       "source": "mattpocock/skills",
       "sourceType": "github",
