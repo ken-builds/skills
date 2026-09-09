@@ -1,0 +1,1 @@
+The next increment shares one connection across several plugins. Stop must release only that plugin's use, while the host closes the shared connection after the last user. Revise the design and verification plan.

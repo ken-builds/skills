@@ -1,0 +1,1 @@
+The application currently constructs reports.FileStore and passes it to reports.Publish. Filesystem paths are not part of the Publish consumer's promised format.

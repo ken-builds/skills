@@ -90,7 +90,15 @@ skills/                         first-party skill definitions
 skills-lock.json                installation sources and content hashes
 ```
 
-Each source skill has a required `SKILL.md` and may include `agents/`, `references/`, `scripts/`, and `tests/` when those resources support its workflow.
+Each source skill has a required `SKILL.md` and may include `agents/`, `references/`, `scripts/`, and `tests/` when those resources support its workflow. Concrete reference files stay inside each skill so standalone installation remains usable.
+
+Architecture, foundation, structure, rationale, and README skills permit model discovery.
+Git commit series remains user-invoked. Discovery selects a workflow; existing task scope
+determines authorized operations and carries forward across handoffs.
+
+Workflows use scoped inventories, decision-changing premises, contract ownership, and final-diff
+checkpoints. Record validity, target coverage, and observed behavior are distinct claims.
+A small local edit can remain on its local verification path.
 
 ## Development
 
@@ -101,12 +109,23 @@ python3 -m unittest skills/greenfield-foundation/tests/test_validate_foundation.
 python3 -m unittest skills/implementation-rationale/tests/test_validate_implementation_record.py
 python3 -m unittest skills/repository-structure/tests/test_inventory_structure.py
 python3 -m unittest skills/readme-authoring/tests/test_validate_readme.py
+python3 -B -m unittest discover -s tests -v
 python3 skills/readme-authoring/scripts/validate_readme.py README.md \
   --profile monorepo \
   --strict
 ```
 
 The README validator checks structure, local links, code fences, placeholders, repository references, and other repository-local invariants; it does not execute README commands or check network reachability.
+
+Architecture and foundation artifact validators report selected, skipped, and failed targets.
+Use `--fail-on-skip` when every selected Markdown file must be a supported Brief or ADR.
+For mixed directories, route each record kind to its actual check and account for gaps;
+format checks cannot establish architecture correctness.
+
+[Behavior evaluations](evals/README.md) provide cross-domain cases and a baseline/candidate
+comparison protocol. Unit checks exercise packaging and deterministic fixtures; model outcomes
+must be measured separately. Project-based evaluations use a separate clone of a recorded
+commit, keeping the active checkout and credentials outside the experiment.
 
 For a read-only structure inventory, including tracked and non-ignored untracked paths:
 

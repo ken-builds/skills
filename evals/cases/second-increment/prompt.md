@@ -1,0 +1,1 @@
+Design the ownership and local organization for this plugin host. A plugin currently owns one connection and disconnects it when stopped. Keep the first version small; record only the decisions needed for implementation.
